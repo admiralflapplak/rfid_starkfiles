@@ -1,6 +1,5 @@
-getData();
 
-const selfies = [];
+getData();
 
 async function getData() {
   const response = await fetch('/rfidInfo');
@@ -11,18 +10,21 @@ async function getData() {
     const mood = document.createElement('div');
     const geo = document.createElement('div');
     const date = document.createElement('div');
-    const image = document.createElement('img');
+    console.log(item)
+    
+    
 
-    mood.textContent = `mood: ${item.mood}`;
-    geo.textContent = `${item.lat}°, ${item.lon}°`;
-    const dateString = new Date(item.timestamp).toLocaleString();
-    date.textContent = dateString;
-    image.src = item.image64;
-    image.alt = 'Dan Shiffman making silly faces.';
+    mood.textContent = `CardId: ${item.Identifier}`;
+    geo.textContent = `Where: ${item.IntelligencePoint}`;
+    
+    date.textContent = "Clues: " 
+    for (readhist of item.ReadHistory){
+      const clue = readhist.IntelligencePoint;
+      console.log(clue);
+      date.textContent += `${clue}, `
+    }
 
-    root.append(mood, geo, date, image);
-
-    selfies.push({ elt: root, time: item.timestamp, mood: item.mood });
+    root.append(mood, geo, date);
     document.body.append(root);
   }
   console.log(data);
