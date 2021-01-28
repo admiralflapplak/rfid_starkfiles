@@ -3,7 +3,7 @@ const express = require('express');
 const Datastore = require('nedb');
 
 const app = express();
-const port =process.env.PORT;
+const port = process.env.PORT;
 app.listen(port, () => {
     console.log('listening at 3000');
 });
