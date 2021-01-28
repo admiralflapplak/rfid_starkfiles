@@ -3,7 +3,10 @@ const express = require('express');
 const Datastore = require('nedb');
 
 const app = express();
-app.listen(3000, () => console.log('listening at 3000'));
+const port =process.env.PORT;
+app.listen(port, () => {
+    console.log('listening at 3000');
+});
 app.use(express.static('views'));
 app.use(express.json()); 
 
